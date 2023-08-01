@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <form class="shadow" [formGroup]="addTodo" (ngSubmit)="submitTodo()">
+    <div class="m-3 form-control">
+      <label for="exampleInputEmail1" class="form-label">Titile</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        placeholder="add todo title here..."
+        name="title"
+        formControlName="title"
+        [ngClass]="{'is-invalid':title.touched&&title.invalid}"
+      />
+      <div class="alert alert-danger" *ngIf="title.touched&&title.invalid">
+        <div *ngIf="title.errors?.required">Title required</div>
+      </div>
+    </div>
+    <div class="m-3 form-control">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        id="description"
+        placeholder="add todo description here..."
+        name="description"
+        formControlName="description"
+        [ngClass]="{'is-invalid': description.touched&&description.invalid}"
+      />
+      <div class="alert alert-danger" *ngIf="description.touched&&description.invalid">
+        <div *ngIf="description.errors?.required">Description required</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-success m-3" [disabled]="addTodo.invalid">Add Todo</button>
+    <button type="reset" class="btn btn-secondary m-3">Reset Todo</button>
+  </form>
+</div>

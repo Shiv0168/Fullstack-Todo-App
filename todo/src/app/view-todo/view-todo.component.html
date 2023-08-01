@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <table class="table shadow-lg">
+        <thead>
+          <tr class="table-secondary">
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-info" *ngFor="let todo of allTodo">
+            <th scope="row">{{todo.id}}</th>
+            <td>{{todo.title}}</td>
+            <td>{{todo.description}}</td>
+            <td>
+                <button (click)="deleteTodo(todo.id)" class="btn btn-danger">Delete</button>
+                <button  routerLink="/edit/{{todo.id}}" class="btn btn-primary ms-3">Edit</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
