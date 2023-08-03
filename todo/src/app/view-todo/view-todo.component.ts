@@ -10,11 +10,15 @@ import { ApiServiieService } from '../api-serviie.service';
 export class ViewTodoComponent implements OnInit {
 
 
-  allTodo:Todo[] = [];
+  allTodo:any = [];
 
   constructor( private apiService:ApiServiieService){};
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData(){
     this.apiService.allTodo().subscribe({
       next:(data)=>{
         this.allTodo = data;
@@ -25,8 +29,7 @@ export class ViewTodoComponent implements OnInit {
   deleteTodo(id:any){
     this.apiService.deleteTodo(id).subscribe({
       next:(data)=>{
-        console.log(data);
-        
+        this.allTodo = data;
       }
     })
   }
