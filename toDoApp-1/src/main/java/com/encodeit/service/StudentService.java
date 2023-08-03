@@ -14,5 +14,5 @@ public interface StudentService {
 
 	Student updateStudent(int id, Student student);
 
-	void deleteStudent(int id);
+	List<Student> deleteStudent(int id);
 }
